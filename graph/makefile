@@ -1,9 +1,9 @@
 # binary search tree
 
-TARGET=graph
+TARGET=dfs
 
-$(TARGET): $(TARGET).c
-	g++ -g -O0 $< -o $@
+$(TARGET): graph.c dfs.c
+	g++ -g -O0 $? -o $@
 
 clean:
 	rm -rf $(TARGET) a.out

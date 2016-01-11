@@ -12,7 +12,7 @@ struct graph_node
 {
     int label;
     int neighbor[MAX_DEGREE];
-    int nbcount;
+    int nbrcount;
 };
 
 struct graph

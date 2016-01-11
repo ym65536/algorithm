@@ -16,13 +16,13 @@ struct graph* graph_creat(struct graph* g, int directed)
     {
         fscanf(fp, "%d %d", &node1, &node2);
         g->nodes[node1].label = node1;
-        g->nodes[node1].neighbor[g->nodes[node1].nbcount] = node2;
-        g->nodes[node1].nbcount++;
+        g->nodes[node1].neighbor[g->nodes[node1].nbrcount] = node2;
+        g->nodes[node1].nbrcount++;
         if (!directed)
         {
             g->nodes[node2].label = node2;
-            g->nodes[node2].neighbor[g->nodes[node2].nbcount] = node1;
-            g->nodes[node2].nbcount++;
+            g->nodes[node2].neighbor[g->nodes[node2].nbrcount] = node1;
+            g->nodes[node2].nbrcount++;
         }
     }
 
@@ -36,18 +36,9 @@ void graph_print(struct graph* g)
     for (i = 0; i < g->nnode; i++)
     {
         printf("node %d: ", i);
-        for (j = 0; j < g->nodes[i].nbcount; j++)
+        for (j = 0; j < g->nodes[i].nbrcount; j++)
             printf("%d ", g->nodes[i].neighbor[j]);
         printf("\n");
     }
 }
 
-struct graph g;
-
-int main(void)
-{
-    graph_creat(&g, 0);
-    graph_print(&g);
-
-    return 0;
-}
