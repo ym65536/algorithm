@@ -1,10 +1,10 @@
 #include "graph.h"
 
-struct graph* graph_creat(struct graph* g, int directed)
+struct graph* graph_creat(struct graph* g, const char* filename, int directed)
 {
     int node, edge;
     int node1, node2;
-    FILE* fp = fopen("graph.txt", "r");
+    FILE* fp = fopen(filename, "r");
     if (!fp)
     {
         printf("open file graph.txt fail!\n");

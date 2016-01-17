@@ -27,7 +27,7 @@ struct graph g;
 int main(void)
 {
 	int i;
-    graph_creat(&g, 1);
+    graph_creat(&g, "graph.txt", 1);
     graph_print(&g);
 
 	DFS(&g, &g.nodes[0]);

@@ -22,7 +22,7 @@ struct graph
     int nedge;
 };
 
-struct graph* graph_creat(struct graph* g, int directed);
+struct graph* graph_creat(struct graph* g, const char* filename, int directed);
 void graph_print(struct graph* g);
 
 #endif
