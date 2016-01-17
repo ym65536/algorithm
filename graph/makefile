@@ -1,8 +1,13 @@
 # binary search tree
 
-TARGET=dfs
+TARGET=dfs bfs
 
-$(TARGET): graph.c dfs.c
+all: $(TARGET)
+
+dfs: graph.c dfs.c
+	g++ -g -O0 -o $@ $?
+
+bfs: graph.c bfs.c
 	g++ -g -O0 -o $@ $?
 
 clean:
