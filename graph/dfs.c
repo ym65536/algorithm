@@ -27,10 +27,10 @@ struct graph g;
 int main(void)
 {
 	int i;
-    graph_creat(&g, 0);
+    graph_creat(&g, 1);
     graph_print(&g);
 
-	DFS(&g, &g.nodes[1]);
+	DFS(&g, &g.nodes[0]);
 	for (i = 0; i < g.nnode; i++)
 		printf("%d-> ", mark[i]);
 	printf("\n");
