@@ -14,7 +14,7 @@ void DFS(struct graph* g, struct graph_node* v)
 	printf("preWork: %d\n", v->label);
 	for (k = 0; k < v->nbrcount; k++)
 	{
-		int neighbor = v->neighbor[k];
+		int neighbor = v->neighbor[k].label;
 		struct graph_node* w = &g->nodes[neighbor];
 		if (mark[w->label] == UNMARK)
 			DFS(g, w);

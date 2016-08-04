@@ -21,7 +21,7 @@ void BFS(struct graph* g, struct graph_node* v)
 		queue_out(&q, (unsigned int* )&w);
 		for (k = 0; k < w->nbrcount; k++)
 		{
-			struct graph_node* x = &g->nodes[w->neighbor[k]];
+			struct graph_node* x = &g->nodes[w->neighbor[k].label];
 			if (!mark[x->label])
 			{
 				mark[x->label] = seqno++;
@@ -37,7 +37,7 @@ struct graph g;
 int main(void)
 {
 	int i;
-    graph_creat(&g, "graph.txt", 1);
+    graph_creat(&g, "graph.txt", 0);
     graph_print(&g);
 
 	seqno = MARK;

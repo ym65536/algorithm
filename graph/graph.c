@@ -3,7 +3,7 @@
 struct graph* graph_creat(struct graph* g, const char* filename, int directed)
 {
     int node, edge;
-    int node1, node2;
+    int node1, node2, weight;
     FILE* fp = fopen(filename, "r");
     if (!fp)
     {
@@ -16,14 +16,16 @@ struct graph* graph_creat(struct graph* g, const char* filename, int directed)
         g->nodes[node].label = node;
     for (edge = 0; edge < g->nedge; edge++)
     {
-        fscanf(fp, "%d %d", &node1, &node2);
+        fscanf(fp, "%d %d %d", &node1, &node2, &weight);
         g->nodes[node1].label = node1;
-        g->nodes[node1].neighbor[g->nodes[node1].nbrcount] = node2;
+        g->nodes[node1].neighbor[g->nodes[node1].nbrcount].label = node2;
+        g->nodes[node1].neighbor[g->nodes[node1].nbrcount].weight = weight;
         g->nodes[node1].nbrcount++;
         if (!directed)
         {
             g->nodes[node2].label = node2;
-            g->nodes[node2].neighbor[g->nodes[node2].nbrcount] = node1;
+            g->nodes[node2].neighbor[g->nodes[node2].nbrcount].label = node1;
+            g->nodes[node2].neighbor[g->nodes[node2].nbrcount].weight = weight;
             g->nodes[node2].nbrcount++;
         }
     }
@@ -39,7 +41,7 @@ void graph_print(struct graph* g)
     {
         printf("node %d: ", i);
         for (j = 0; j < g->nodes[i].nbrcount; j++)
-            printf("%d ", g->nodes[i].neighbor[j]);
+            printf("<%d, %d>", g->nodes[i].neighbor[j].label, g->nodes[i].neighbor[j].weight);
         printf("\n");
     }
 }

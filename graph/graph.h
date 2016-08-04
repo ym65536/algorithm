@@ -8,10 +8,16 @@
 #define MAX_DEGREE 128
 #define MAX_NODE 128
 
+struct edge
+{
+	int label;
+	int weight;
+};
+
 struct graph_node
 {
     int label;
-    int neighbor[MAX_DEGREE];
+    struct edge neighbor[MAX_DEGREE];
     int nbrcount;
 };
 

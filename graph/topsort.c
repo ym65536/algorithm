@@ -12,7 +12,7 @@ void init_indegree(struct graph* g, int indegree[])
 	{
 		for (nbr = 0; nbr < g->nodes[node].nbrcount; nbr++)
 		{
-			int neighbor = g->nodes[node].neighbor[nbr];
+			int neighbor = g->nodes[node].neighbor[nbr].label;
 			indegree[neighbor]++;
 		}
 	}
@@ -42,7 +42,7 @@ void topsort(struct graph* g)
 		struct graph_node V = g->nodes[v];
 		for (k = 0; k < V.nbrcount; k++)
 		{
-			w = V.neighbor[k];
+			w = V.neighbor[k].label;
 			indegree[w]--;
 			if (indegree[w] == 0) 
 				queue_in(&q, (unsigned int* )&w);
