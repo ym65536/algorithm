@@ -1,17 +1,14 @@
-# binary search tree
+# graph
 
-TARGET=dfs bfs topsort
+TARGET=main
 
 all: $(TARGET)
 
-dfs: graph.c dfs.c
-	g++ -g -O0 -o $@ $?
+main: main.cc graph.cc
+	g++ -std=c++0x -g -O0 -o $@ $?
 
-bfs: graph.c bfs.c
-	g++ -g -O0 -o $@ $?
-
-topsort: graph.c topsort.c
-	g++ -g -O0 -o $@ $?
+#topsort: graph.c topsort.c
+#	g++ -g -O0 -o $@ $?
 
 clean:
 	rm -rf $(TARGET) a.out

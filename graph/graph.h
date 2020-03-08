@@ -4,31 +4,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
+#include <vector>
+#include <string>
 
-#define MAX_DEGREE 128
-#define MAX_NODE 128
-
-struct edge
-{
-	int label;
-	int weight;
+struct Edge {
+  Edge(int node, int weight): id(node), w(weight) {};
+	int id;
+	int w;
 };
 
-struct graph_node
-{
-    int label;
-    struct edge neighbor[MAX_DEGREE];
-    int nbrcount;
-};
+class Graph {
+ public:
+  std::vector<std::vector<Edge>> nodes_; // node_id, edge_id
+  std::vector<int> degrees_;
 
-struct graph
-{
-    struct graph_node nodes[MAX_NODE];
-    int nnode;
-    int nedge;
-};
+ public:
+  Graph(const char* file, int directed = 0);
+  void ToString();
 
-struct graph* graph_creat(struct graph* g, const char* filename, int directed);
-void graph_print(struct graph* g);
+  void BFS(int start_node); 
+};
 
 #endif
+
