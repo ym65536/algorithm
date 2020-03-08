@@ -24,6 +24,7 @@ class Graph {
   void ToString();
 
   void BFS(int start_node); 
+  void DFS(int start_node, std::vector<int>& marked, int& seqno);
 };
 
 #endif

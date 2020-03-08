@@ -55,4 +55,15 @@ void Graph::BFS(int start_node) {
 	}
 }
 
+void Graph::DFS(int start_node, vector<int>& marked, int& seqno) {
+  marked[start_node] = ++seqno;
+	printf("preWork: <%d, %d>\n", start_node, marked[start_node]);
+	for (int k = 0; k < nodes_[start_node].size(); ++ k) {
+    auto& edge = nodes_[start_node][k];
+		if (marked[edge.id] == 0) {
+			DFS(edge.id, marked, seqno);
+		  printf("postWork: <%d %d>\n", edge.id, marked[edge.id]);
+    }
+	}
+}
 
